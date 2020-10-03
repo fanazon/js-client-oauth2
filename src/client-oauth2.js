@@ -431,8 +431,7 @@ OwnerFlow.prototype.getToken = function (username, password, opts) {
   var self = this
   var options = Object.assign({}, this.client.options, opts)
   var headers = Object.assign({}, DEFAULT_HEADERS)
-  var body = {
-    scope: sanitizeScope(options.scopes),
+  const body = {
     username: username,
     password: password,
     grant_type: 'password'
@@ -447,11 +446,6 @@ OwnerFlow.prototype.getToken = function (username, password, opts) {
     body.client_id = options.clientId
   }
 
-  const body = {
-    username: username,
-    password: password,
-    grant_type: 'password'
-  }
   if (options.scopes !== undefined) {
     body.scope = sanitizeScope(options.scopes)
   }
